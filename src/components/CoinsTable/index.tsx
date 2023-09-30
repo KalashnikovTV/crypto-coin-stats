@@ -20,8 +20,8 @@ export const CoinsTable: FC<CoinsTableProps> = ({ data }: CoinsTableProps) => {
           <th>Coin</th>
           <th>Name</th>
           <th>Price</th>
-          <th>Website URL</th>
           <th>Price change (1w &#8260; 1d &#8260; 1h)</th>
+          <th>Website URL</th>
         </tr>
       </thead>
       <tbody>
@@ -35,9 +35,6 @@ export const CoinsTable: FC<CoinsTableProps> = ({ data }: CoinsTableProps) => {
               <td>{name}</td>
               <td>${price}</td>
               <td>
-                <a href={websiteUrl} target="_blank" rel="noreferrer noopener nofollow" title={`Go to ${websiteUrl}`}>{websiteUrl}</a>
-              </td>
-              <td>
                 <div style={{ display: 'flex', gap: 8 }}>
                 <SparkLine price={priceChange1w} />
                 &#8260;
@@ -45,6 +42,9 @@ export const CoinsTable: FC<CoinsTableProps> = ({ data }: CoinsTableProps) => {
                 &#8260;
                 <SparkLine price={priceChange1h} />
                 </div>
+              </td>
+              <td>
+                <a href={websiteUrl} target="_blank" rel="noreferrer noopener nofollow" title={`Go to ${websiteUrl}`}>{websiteUrl}</a>
               </td>
             </tr>
           )}
