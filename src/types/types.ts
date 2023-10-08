@@ -21,7 +21,15 @@ export interface Coin {
 }
 
 export interface CoinAPI {
-  coins: Coin[];
+  meta: {
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+    itemCount: number;
+    limit: number;
+    page: number;
+    pageCount: number;
+  }
+  result: Coin[];
 }
 
 export interface FormatOptions {

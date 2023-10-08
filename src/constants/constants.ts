@@ -1,4 +1,5 @@
 export const PAGE_LIMIT: number = 20;
+export const PAGE_NUMBER: number = 1;
 
 export const POSITIVE_COLOR: string = '#06c167';
 export const NEGATIVE_COLOR: string = '#e85c4a';

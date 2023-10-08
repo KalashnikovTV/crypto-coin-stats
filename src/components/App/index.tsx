@@ -3,10 +3,10 @@ import { useQuery } from 'react-query';
 import { Container, Button, Stack } from 'react-bootstrap';
 import { CoinsTable } from '../CoinsTable';
 import { fetchCoins } from '../../services/services';
-import { PAGE_LIMIT } from '../../constants/constants';
+import { PAGE_NUMBER } from '../../constants/constants';
 
 const App: FC = () => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(PAGE_NUMBER);
 
   const { data, isLoading, isError } = useQuery(['coins', page], () => fetchCoins(page), { refetchOnWindowFocus: false, keepPreviousData: true });
 
@@ -20,11 +20,11 @@ const App: FC = () => {
 
   return (
     <Container style={{ marginTop: 60 }}>
-      <CoinsTable data={data} />
+      <CoinsTable data={data?.result} />
 
       <Stack direction="horizontal" gap={2}>
-        <Button onClick={() => setPage((prev) => prev - PAGE_LIMIT)} disabled={!page}>Prev</Button>
-        <Button onClick={() => setPage((prev) => prev + PAGE_LIMIT)}>Next</Button>
+        <Button onClick={() => setPage((prev) => prev - 1)} disabled={!data?.meta?.hasPreviousPage ?? false}>Prev</Button>
+        <Button onClick={() => setPage((prev) => prev + 1)} disabled={!data?.meta?.hasNextPage ?? false}>Next</Button>
       </Stack>
     </Container>
   )
